@@ -108,8 +108,6 @@ python dif.py gif-pde -s 400 --save-every 3 -o diff.gif
 python dif.py gif-pde --source two -s 500 --save-every 3 -o diff_two.gif
 python dif.py study all
 python dif.py physics all
-## Базовые GIF
-
 Случайное блуждание — облако из 300 частиц расползается за 200 шагов:
 ![Случайное блуждание](walk.gif)
 
@@ -152,15 +150,6 @@ python dif.py physics all
 Результат: $D_{\text{obs}}/D_{\text{free}} = 0.466$ vs $(1-f)^2 = 0.56$.
 
 ## Температурная зависимость (закон Аррениуса)
-
-Варьируется энергия активации $E_a$:
-Аррениусовский график $\ln D$ от $1/T$:
-![Закон Аррениуса](results/phys4_arrhenius.png)
-
-Результат: $E_a^{\text{оцен}} = 0.952$ при заданном $1.0$, ошибка $4.77\%$.
-
-## Валидация PDE
-
 Сравнение численного решения с аналитикой на четырёх срезах:
 ![PDE vs аналитика](results/study2_pde.png)
 
