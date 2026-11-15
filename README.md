@@ -99,6 +99,8 @@ python dif.py gif-pde -s 400 --save-every 3 -o diff.gif
 python dif.py gif-pde --source two -s 500 --save-every 3 -o diff_two.gif
 python dif.py study all
 python dif.py physics all
+```
+
 ## Базовые GIF
 
 Случайное блуждание — облако из 300 частиц расползается за 200 шагов:
