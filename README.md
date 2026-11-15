@@ -100,88 +100,11 @@ $$
 
 где $f$ — доля препятствий.
 
-Интерфейс: 
+## Интерфейс
+
+```bash
 python dif.py gif-walk -n 300 -s 200 --seed 42 -o walk.gif
 python dif.py gif-pde -s 400 --save-every 3 -o diff.gif
 python dif.py gif-pde --source two -s 500 --save-every 3 -o diff_two.gif
 python dif.py study all
 python dif.py physics all
-
-## Базовые GIF
-
-Случайное блуждание — облако из 300 частиц расползается за 200 шагов:
-![Случайное блуждание](walk.gif)
-
-Диффузия от одного источника — расширяющееся пятно:
-![Диффузия — один источник](diff.gif)
-
-Диффузия от двух источников — суперпозиция:
-![Диффузия — два источника](diff_two.gif)
-
-## Исследование 1 — броуновское движение
-
-Гистограмма координат после 100 шагов с теоретической гауссианой и 2D-облако 20 000 частиц:
-![Распределение броуновского движения](results/phys1_brownian_distribution.png)
-
-Анимация 200 частиц за 100 шагов:
-![Броуновское движение — анимация](results/phys1_brownian.gif)
-
-**Результат:** $\sigma_x^{\text{сим}}/\sigma_x^{\text{теор}} = 1.010$ — в пределах 1% от теории.
-
-## Исследование 2 — два источника (суперпозиция)
-
-Профили концентрации вдоль оси $X$ на четырёх временных срезах:
-![Два источника — профили](results/phys2_sources_profiles.png)
-
-Анимация эволюции поля $T(x,y,t)$:
-![Два источника — анимация](results/phys2_sources.gif)
-
-**Результат:** численные профили совпадают с аналитикой. Слияние не достигается, т.к. $\tau \sim d^2/(2\kappa) \approx 2000 \gg t_{\max} = 2.5$.
-
-## Исследование 3 — пористая среда
-
-Среднеквадратичное смещение в свободной среде и с 25% препятствий:
-![Пористая среда — MSD](results/phys3_obstacles_msd.png)
-
-Анимация траектории в пористой среде:
-![Пористая среда — траектория](results/phys3_obstacles.gif)
-
-**Результат:** $D_{\text{obs}}/D_{\text{free}} = 0.466$ vs $(1-f)^2 = 0.56$.
-
-## Исследование 4 — закон Аррениуса
-
-Аррениусовский график $\ln D$ от $1/T$:
-![Закон Аррениуса](results/phys4_arrhenius.png)
-
-**Результат:** $E_a^{\text{оцен}} = 0.952$ при заданном $1.0$, ошибка $4.77\%$.
-
-## PDE vs аналитика
-
-Сравнение численного решения с аналитикой на четырёх срезах:
-![PDE vs аналитика](results/study2_pde.png)
-
-**Результат:** $L2_{rel} < 2\%$.
-
-## MSD ∝ t
-
-Среднеквадратичное смещение со временем:
-![MSD ∝ t](results/study1_msd.png)
-
-**Результат:** наклон $0.995$ при теоретическом $1.0$.
-
-## Параметрические исследования
-
-Влияние доли препятствий:
-python dif.py physics obstacles --set obstacles_fraction=0.1
-python dif.py physics obstacles --set obstacles_fraction=0.25
-python dif.py physics obstacles --set obstacles_fraction=0.4
-
-Влияние энергии активации:
-python dif.py physics arrhenius --set Ea=0.5
-python dif.py physics arrhenius --set Ea=1.0
-python dif.py physics arrhenius --set Ea=2.0
-
-Сходимость PDE по сетке:
-python dif.py study pde --set nx=101 ny=101 dt=0.005
-python dif.py study pde --set nx=201 ny=201 dt=0.0025
-python dif.py study pde --set nx=401 ny=401 dt=0.001
